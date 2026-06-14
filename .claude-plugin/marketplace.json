@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "soreavis-skills",
+  "description": "Pre-ship audit suite for Claude Code: security, code quality, dependencies, compliance, accessibility, SEO, forms, responsive, deploy readiness, and LLM hallucination risk — plus an orchestrator and a report differ.",
+  "owner": {
+    "name": "Julian Soreavis"
+  },
+  "plugins": [
+    {
+      "name": "audit",
+      "source": "./plugins/audit",
+      "description": "13 audit skills under one plugin (/audit:all, /audit:security, /audit:deep, …). Run any audit individually, or /audit:all to orchestrate the whole suite into one combined scorecard.",
+      "author": {
+        "name": "Julian Soreavis"
+      },
+      "homepage": "https://github.com/soreavis/claude-audit-skills",
+      "repository": "https://github.com/soreavis/claude-audit-skills",
+      "license": "MIT",
+      "category": "quality",
+      "keywords": [
+        "audit",
+        "security",
+        "owasp",
+        "accessibility",
+        "wcag",
+        "seo",
+        "compliance",
+        "gdpr",
+        "dependencies",
+        "responsive",
+        "hallucination"
+      ]
+    }
+  ]
+}

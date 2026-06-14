@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "audit",
+  "version": "0.1.0",
+  "description": "A complete pre-ship audit suite for Claude Code: 13 skills covering security (33 OWASP-era vectors), deep code quality, dependency health, regulatory compliance (GDPR/ISO), accessibility (WCAG 2.1 AA), SEO + GEO, form hardening, responsive design, deploy readiness, and LLM hallucination risk — plus /audit:all to orchestrate them and /audit:diff to compare reports over time.",
+  "author": {
+    "name": "Julian Soreavis"
+  },
+  "homepage": "https://github.com/soreavis/claude-audit-skills",
+  "repository": "https://github.com/soreavis/claude-audit-skills",
+  "license": "MIT",
+  "keywords": [
+    "audit",
+    "security",
+    "owasp",
+    "accessibility",
+    "wcag",
+    "seo",
+    "geo",
+    "compliance",
+    "gdpr",
+    "iso27001",
+    "dependencies",
+    "responsive",
+    "hallucination",
+    "code-quality"
+  ]
+}
