@@ -2,6 +2,7 @@
 
 **A pre-ship audit suite for [Claude Code](https://claude.com/claude-code) — 13 skills under one plugin. Run any audit on its own, or `/audit:all` to orchestrate the whole suite into a single combined scorecard.**
 
+[![validate](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-f97a5e)
 ![Skills](https://img.shields.io/badge/skills-13-blue)

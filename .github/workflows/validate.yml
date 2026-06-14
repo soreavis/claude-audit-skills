@@ -1,0 +1,42 @@
+name: validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Manifests are valid JSON
+        run: |
+          python3 -c "import json; json.load(open('.claude-plugin/marketplace.json'))"
+          python3 -c "import json; json.load(open('plugins/audit/.claude-plugin/plugin.json'))"
+          echo "OK: marketplace.json and plugin.json parse"
+
+      - name: Every skill has a SKILL.md with YAML frontmatter
+        run: |
+          fail=0
+          for d in plugins/audit/skills/*/; do
+            f="${d}SKILL.md"
+            if [ ! -f "$f" ]; then echo "MISSING: $f"; fail=1; continue; fi
+            if [ "$(head -n1 "$f")" != "---" ]; then echo "NO FRONTMATTER: $f"; fail=1; fi
+          done
+          if [ "$fail" = 0 ]; then echo "OK: all skills present with frontmatter"; else exit 1; fi
+
+      - name: Marketplace plugin sources resolve
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          mp = json.load(open(".claude-plugin/marketplace.json"))
+          bad = 0
+          for p in mp.get("plugins", []):
+              src = p["source"].lstrip("./")
+              if not os.path.isdir(src):
+                  print(f"BAD SOURCE: plugin '{p['name']}' -> {src} not found")
+                  bad = 1
+          sys.exit(bad)
+          PY
+          echo "OK: plugin sources resolve"

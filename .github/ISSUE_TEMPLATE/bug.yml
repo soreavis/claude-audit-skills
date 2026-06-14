@@ -1,0 +1,52 @@
+name: Bug report
+description: A skill produced a wrong result, errored, or behaved unexpectedly
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which audit
+      options:
+        - "/audit:all"
+        - "/audit:security"
+        - "/audit:deep"
+        - "/audit:deps"
+        - "/audit:compliance"
+        - "/audit:tech-stack"
+        - "/audit:forms"
+        - "/audit:a11y"
+        - "/audit:seo"
+        - "/audit:deploy"
+        - "/audit:responsive"
+        - "/audit:hallucination"
+        - "/audit:diff"
+        - "the plugin / install itself"
+    validations:
+      required: true
+  - type: input
+    id: cc-version
+    attributes:
+      label: Claude Code version
+      description: "Output of `claude --version`"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you ran
+      description: The exact command and any flags
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the relevant output. Redact anything sensitive.
+    validations:
+      required: true

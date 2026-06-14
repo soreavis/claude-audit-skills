@@ -1,0 +1,30 @@
+name: New audit / check suggestion
+description: Suggest a new audit skill, or a vector/check an existing audit misses
+labels: ["enhancement"]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: New audit name, or existing audit to extend
+      description: "e.g. a new `/audit:licenses`, or 'add vector X to /audit:security'"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What should it check?
+      description: The problem in the code, and how a Grep/Glob/Read would surface it.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Why do existing audits miss it?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
