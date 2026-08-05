@@ -7,6 +7,8 @@ and this plugin adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-05
+
 ### Added
 - `build/validate.py` — a single, locally-runnable validation gate covering manifest JSON validity, plugin-source resolution, and real YAML parsing of every skill's frontmatter (name + description required).
 - **Anti-hallucination guardrail in CI.** The gate now fails any skill that ships without an anti-hallucination rules heading and evidence-grounding language, so the suite's core promise — every finding traces to real `file:line` evidence — can't silently drift as skills are added.
