@@ -26,7 +26,7 @@ The skill **directory name** is the command suffix: `skills/security/` → `/aud
    argument-hint: "[--fix] [--scope=<path>] [--report]"
    ---
    ```
-2. Write the methodology in the body. Keep findings **evidence-based** — every finding must cite a real `file:line` found via Grep/Glob/Read. Follow the anti-hallucination rules the other skills use (no invented identifiers, no speculation).
+2. Write the methodology in the body. Keep findings **evidence-based** — every finding must cite a real `file:line` found via Grep/Glob/Read. Follow the anti-hallucination rules the other skills use (no invented identifiers, no speculation), and end the skill with an `## Anti-Hallucination Rules` section — `build/validate.py` requires one.
 3. If it produces a report and should be part of `/audit:all`, add it to the covered set and tiers in `skills/all/SKILL.md`.
 4. Update the command table in `README.md` and add a `CHANGELOG.md` entry.
 
@@ -35,11 +35,12 @@ The skill **directory name** is the command suffix: `skills/security/` → `/aud
 Before opening a PR:
 
 ```bash
-claude plugin validate .
+python3 build/validate.py            # what CI runs; needs PyYAML (pip install pyyaml)
+claude plugin validate .             # official marketplace-manifest check
 claude plugin validate ./plugins/audit
 ```
 
-CI runs the same manifest checks (valid JSON, every skill has a `SKILL.md` with frontmatter, plugin sources resolve).
+CI runs `build/validate.py` on every push and PR. It checks that the manifests are valid JSON, every skill's frontmatter parses as YAML with a `name` + `description`, plugin sources resolve, and — the guardrail that keeps this suite honest — **every skill carries an anti-hallucination rules section with evidence-grounding language**. A new audit without one fails CI.
 
 ## Submitting changes
 

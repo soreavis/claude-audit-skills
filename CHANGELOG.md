@@ -5,6 +5,16 @@ All notable changes to this plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this plugin adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- `build/validate.py` — a single, locally-runnable validation gate covering manifest JSON validity, plugin-source resolution, and real YAML parsing of every skill's frontmatter (name + description required).
+- **Anti-hallucination guardrail in CI.** The gate now fails any skill that ships without an anti-hallucination rules heading and evidence-grounding language, so the suite's core promise — every finding traces to real `file:line` evidence — can't silently drift as skills are added.
+
+### Changed
+- CI `validate.yml` now runs `build/validate.py` instead of duplicating manifest checks inline.
+- README restructured for clarity and correct attribution (independence notice, `Created by`, `MIT © 2026` license line); documents the anti-hallucination CI gate. `CONTRIBUTING.md` documents `build/validate.py` and the mandatory anti-hallucination section for new audits.
+
 ## [0.1.0] - 2026-06-14
 
 ### Added

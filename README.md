@@ -1,15 +1,16 @@
 # claude-audit-skills
 
-**A pre-ship audit suite for [Claude Code](https://claude.com/claude-code) — 13 skills under one plugin. Run any audit on its own, or `/audit:all` to orchestrate the whole suite into a single combined scorecard.**
-
 [![validate](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-f97a5e)
 ![Skills](https://img.shields.io/badge/skills-13-blue)
 
----
+A pre-ship audit suite for [Claude Code](https://claude.com/claude-code): 13 skills under one plugin. Run any audit on its own, or `/audit:all` to orchestrate the whole suite into a single combined scorecard with a SHIP / WARNINGS / DO NOT SHIP verdict.
 
-This is a Claude Code **plugin marketplace**. The whole suite installs as one plugin (`audit`); every audit is then an individually invocable, namespaced command (`/audit:security`, `/audit:a11y`, …). One install, no per-repo sprawl, no drift between siblings.
+It installs as a Claude Code **plugin marketplace**. The whole suite installs as one plugin (`audit`); every audit is then an individually invocable, namespaced command (`/audit:security`, `/audit:a11y`, …). One install, no per-repo sprawl, no drift between siblings.
+
+> [!IMPORTANT]
+> **An independent project, built and maintained by Julian Soreavis.** Not affiliated with, endorsed by, or sponsored by Anthropic or any of the standards bodies whose catalogs it references (OWASP, W3C / WCAG, ISO, and others). Product names, trademarks, and standards are used here only to describe what each audit checks. Use at your own risk.
 
 ## The audits
 
@@ -29,7 +30,7 @@ This is a Claude Code **plugin marketplace**. The whole suite installs as one pl
 | `/audit:hallucination` | LLM fabrication-risk audit — 46 vectors for prompts, AI-integration code, and generated content |
 | `/audit:diff` | Compare two audit reports — what improved, regressed, or is new |
 
-Every audit is **report-only by default**; the ones that can remediate take an opt-in `--fix`. All findings carry `file:line` evidence, and each skill enforces its own anti-hallucination rules (no invented identifiers, evidence-mandated findings).
+Every audit is **report-only by default**; the ones that can remediate take an opt-in `--fix`. All findings carry `file:line` evidence, and each skill enforces its own anti-hallucination rules — no invented identifiers, evidence-mandated findings. CI (`build/validate.py`) fails any skill that ships without them.
 
 ## Install
 
@@ -40,7 +41,7 @@ Every audit is **report-only by default**; the ones that can remediate take an o
 # 2. Install the suite:
 /plugin install audit@soreavis-skills
 
-# 3. Activate without restarting:
+# 3. Activate without restarting (if the install summary says to):
 /reload-plugins
 ```
 
@@ -52,7 +53,9 @@ Then run any audit, e.g.:
 /audit:a11y
 ```
 
-Team setup (project `.claude/settings.json`):
+### For a team or a repo
+
+Add this to a project's `.claude/settings.json` and everyone who trusts the folder gets the marketplace and plugin:
 
 ```json
 {
@@ -89,6 +92,8 @@ Team setup (project `.claude/settings.json`):
 claude-audit-skills/
 ├── .claude-plugin/
 │   └── marketplace.json          # lists the `audit` plugin
+├── build/
+│   └── validate.py               # CI gate — manifests, YAML frontmatter, anti-hallucination guardrail
 └── plugins/
     └── audit/
         ├── .claude-plugin/plugin.json
@@ -107,10 +112,18 @@ claude-audit-skills/
 
 No external services. No API keys. Pure methodology + Claude Code execution.
 
+## Contributing
+
+Bug reports, new audits, and extra checks are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Report security issues privately per [SECURITY.md](SECURITY.md).
+
+## Credits
+
+- **Created by**: [Julian Soreavis](https://github.com/soreavis)
+
 ## License
 
-[MIT](./LICENSE) — copy it, ship it, improve it.
+MIT © 2026 Julian Soreavis — see [LICENSE](LICENSE).
 
 ## Acknowledgments
 
-Built with [Claude Code](https://claude.com/claude-code). Vector and checklist catalogs assembled from OWASP, WCAG 2.1, web.dev, GDPR / ISO 27001:2022, and real shipping experience.
+Vector and checklist catalogs assembled from OWASP, WCAG 2.1, web.dev, GDPR / ISO 27001:2022, and real shipping experience.
