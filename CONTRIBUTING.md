@@ -10,10 +10,10 @@ This is a single Claude Code plugin (`audit`) that bundles many audit skills:
 .claude-plugin/marketplace.json     # lists the `audit` plugin
 plugins/audit/
   .claude-plugin/plugin.json
-  skills/<name>/SKILL.md             # each becomes the command /audit:<name>
+  skills/<name>/SKILL.md             # each becomes the command /audit:audit-<name>
 ```
 
-The skill **directory name** is the command suffix: `skills/security/` → `/audit:security`. The `name:` in frontmatter is a display label.
+For a plugin skill, the frontmatter **`name:`** sets the command's last segment (the directory name is only the fallback when `name:` is omitted). So `skills/security/SKILL.md` with `name: audit-security` becomes `/audit:audit-security`, and the bare `/audit-security` also works.
 
 ## Adding a new audit
 
@@ -27,7 +27,7 @@ The skill **directory name** is the command suffix: `skills/security/` → `/aud
    ---
    ```
 2. Write the methodology in the body. Keep findings **evidence-based** — every finding must cite a real `file:line` found via Grep/Glob/Read. Follow the anti-hallucination rules the other skills use (no invented identifiers, no speculation), and end the skill with an `## Anti-Hallucination Rules` section — `build/validate.py` requires one.
-3. If it produces a report and should be part of `/audit:all`, add it to the covered set and tiers in `skills/all/SKILL.md`.
+3. If it produces a report and should be part of `/audit:audit-all`, add it to the covered set and tiers in `skills/all/SKILL.md`.
 4. Update the command table in `README.md` and add a `CHANGELOG.md` entry.
 
 ## Validating
@@ -55,5 +55,5 @@ CI runs `build/validate.py` on every push and PR. It checks that the manifests a
 /plugin marketplace add <path-to-your-clone>
 /plugin install audit@soreavis-skills
 /reload-plugins
-/audit:<name>
+/audit:audit-<name>
 ```

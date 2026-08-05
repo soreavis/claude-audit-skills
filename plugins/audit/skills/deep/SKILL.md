@@ -272,7 +272,7 @@ If `--fix` is passed:
 6. After all fixes: run build command (if available), then lint (if available). Fix any breakage.
 7. Append a "Fixes Applied" section to the report listing what was changed.
 
-If `--fix` is NOT passed: print the summary and say "Run `/audit:deep --fix` to fix critical and high issues."
+If `--fix` is NOT passed: print the summary and say "Run `/audit:audit-deep --fix` to fix critical and high issues."
 
 **Do NOT ask "Want me to fix?" and wait** — the user will invoke `--fix` explicitly if they want fixes.
 

@@ -8,8 +8,8 @@
 
 ## Checklist
 
-- [ ] `claude plugin validate .` passes
-- [ ] New/changed skills keep `user-invocable` frontmatter and an `argument-hint`
+- [ ] `python3 build/validate.py` and `claude plugin validate .` pass
+- [ ] New/changed skills have valid YAML frontmatter (`name` + `description`) and an `## Anti-Hallucination Rules` section
 - [ ] Findings stay evidence-based (file:line), per each skill's anti-hallucination rules
 - [ ] README / CHANGELOG updated if commands or behavior changed
 

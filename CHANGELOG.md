@@ -15,11 +15,14 @@ and this plugin adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - CI `validate.yml` now runs `build/validate.py` instead of duplicating manifest checks inline.
 - README restructured for clarity and correct attribution (independence notice, `Created by`, `MIT © 2026` license line); documents the anti-hallucination CI gate. `CONTRIBUTING.md` documents `build/validate.py` and the mandatory anti-hallucination section for new audits.
 
+### Fixed
+- Corrected the documented command form across the README, issue templates, and skill bodies. Because each skill's frontmatter `name:` (`audit-<x>`) sets a plugin command's last segment, the real command is `/audit:audit-<x>` (bare alias `/audit-<x>`), not `/audit:<x>`.
+
 ## [0.1.0] - 2026-06-14
 
 ### Added
 - Initial release as a Claude Code plugin marketplace bundling 13 audit skills under one `audit` plugin.
-- Skills (all namespaced `/audit:<name>`):
+- Skills (all namespaced `/audit:audit-<name>`):
   - `all` — orchestrator: runs the suite sequentially and merges into one combined scorecard (SHIP / WARNINGS / DO NOT SHIP), with `quick` / `standard` / `full` tiers and `--include`/`--skip`/`--scope`/`--fix`/`--report`.
   - `security` — 33-vector attack-surface audit.
   - `deep` — code quality + security + injection surface (3 parallel agents).
@@ -34,7 +37,7 @@ and this plugin adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   - `hallucination` — 46-vector LLM fabrication-risk audit.
   - `diff` — compare two audit reports (fixed / new / regressed / deferred).
 - Each skill is report-only by default; remediation skills take an opt-in `--fix`.
-- In-skill command references updated from the previous standalone `/audit-<name>` form to the plugin-namespaced `/audit:<name>` form.
+- In-skill command references use the plugin-namespaced `/audit:audit-<name>` form (each skill's frontmatter `name:` sets the command's last segment; the bare `/audit-<name>` also works).
 - `audit-all` reworked for the bundled model: resolves sibling skills from within the plugin (no separate install step), expanded to orchestrate the full bundled set.
 
 ### Notes

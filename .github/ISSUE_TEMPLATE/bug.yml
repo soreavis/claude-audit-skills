@@ -7,19 +7,19 @@ body:
     attributes:
       label: Which audit
       options:
-        - "/audit:all"
-        - "/audit:security"
-        - "/audit:deep"
-        - "/audit:deps"
-        - "/audit:compliance"
-        - "/audit:tech-stack"
-        - "/audit:forms"
-        - "/audit:a11y"
-        - "/audit:seo"
-        - "/audit:deploy"
-        - "/audit:responsive"
-        - "/audit:hallucination"
-        - "/audit:diff"
+        - "/audit:audit-all"
+        - "/audit:audit-security"
+        - "/audit:audit-deep"
+        - "/audit:audit-deps"
+        - "/audit:audit-compliance"
+        - "/audit:audit-tech-stack"
+        - "/audit:audit-forms"
+        - "/audit:audit-a11y"
+        - "/audit:audit-seo"
+        - "/audit:audit-deploy"
+        - "/audit:audit-responsive"
+        - "/audit:audit-hallucination"
+        - "/audit:audit-diff"
         - "the plugin / install itself"
     validations:
       required: true

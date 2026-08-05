@@ -25,8 +25,8 @@ If no report paths given:
    - Pattern: `mega-audit-YYYY-MM-DD.md` (no number prefix)
 2. Sort by date in filename
 3. If 2+ found: use the two most recent as older and newer
-4. If only 1 found: print "Only one audit report found. Run `/audit:all` again to generate a second report for comparison." and STOP.
-5. If 0 found: print "No audit reports found in `_local/reports/`. Run `/audit:all` first." and STOP.
+4. If only 1 found: print "Only one audit report found. Run `/audit:audit-all` again to generate a second report for comparison." and STOP.
+5. If 0 found: print "No audit reports found in `_local/reports/`. Run `/audit:audit-all` first." and STOP.
 
 If paths are given, verify they exist via Read. If a file doesn't exist, print the error and STOP.
 

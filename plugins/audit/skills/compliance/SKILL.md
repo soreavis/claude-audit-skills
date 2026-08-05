@@ -17,7 +17,7 @@ Audit code against regulatory compliance frameworks. Score each changed or speci
 - After adding new features that touch personal data, user input, or external integrations
 - Before a release that changes data handling, authentication, logging, or error paths
 - When preparing for an external audit, DPIA, penetration test, or certification renewal
-- As part of `/audit:all --tier=enterprise` or on its own when compliance is the concern
+- As part of `/audit:audit-all --tier=enterprise` or on its own when compliance is the concern
 
 Not a substitute for a human DPO, legal counsel, or accredited auditor. This skill finds code-level gaps; it does not certify compliance.
 
@@ -376,8 +376,8 @@ These are non-negotiable:
 - **Framework evolution.** GDPR guidance, ISO 27001 Annex A (2022 revision), and HIPAA OCR guidance change. Re-run periodically.
 - **Jurisdiction.** This skill assumes EU/EEA for GDPR, global for ISO, US for HIPAA. It does not cover CCPA, LGPD, PIPL, UK DPA 2018, or sector-specific rules (FERPA, GLBA, etc.) — add them via issue if needed.
 
-## Integration with /audit:all
+## Integration with /audit:audit-all
 
-When invoked via `/audit:all`, this skill receives a condensed instruction from the orchestrator and writes its report to a numbered file (e.g., `mega-audit-9-compliance-YYYY-MM-DD.md`). It must end with the `---AUDIT-SUMMARY---` block so the orchestrator can parse counts.
+When invoked via `/audit:audit-all`, this skill receives a condensed instruction from the orchestrator and writes its report to a numbered file (e.g., `mega-audit-9-compliance-YYYY-MM-DD.md`). It must end with the `---AUDIT-SUMMARY---` block so the orchestrator can parse counts.
 
 Default framework list when invoked from `audit-all` is `gdpr,iso27001,iso9001`. Tier `enterprise` adds `hipaa,soc2,pci` if the project's stack suggests they apply (HIPAA if health data signals; PCI if payment processing; SOC 2 always in enterprise tier).

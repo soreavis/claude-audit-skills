@@ -19,19 +19,19 @@ The sibling audits this orchestrator can run (all bundled in the `audit` plugin)
 
 | Skill | Command | Focus |
 |---|---|---|
-| security | `/audit:security` | Attack surface (33 vectors) |
-| deep | `/audit:deep` | Code quality + security + injection (3 agents) |
-| deps | `/audit:deps` | Dependency health (licenses, outdated, unused, bundle) |
-| compliance | `/audit:compliance` | GDPR / ISO 27001 / ISO 9001 (7 dimensions) |
-| tech-stack | `/audit:tech-stack` | Stack-convention conformance (8 checks) |
-| forms | `/audit:forms` | Form hardening (38 checks) |
-| a11y | `/audit:a11y` | WCAG 2.1 AA (29 checks) |
-| seo | `/audit:seo` | SEO + GEO (24 checks) |
-| deploy | `/audit:deploy` | Pre-deploy readiness (29 checks) |
-| responsive | `/audit:responsive` | Mobile / responsive (15 checks) |
-| hallucination | `/audit:hallucination` | LLM fabrication risk (46 vectors) |
+| security | `/audit:audit-security` | Attack surface (33 vectors) |
+| deep | `/audit:audit-deep` | Code quality + security + injection (3 agents) |
+| deps | `/audit:audit-deps` | Dependency health (licenses, outdated, unused, bundle) |
+| compliance | `/audit:audit-compliance` | GDPR / ISO 27001 / ISO 9001 (7 dimensions) |
+| tech-stack | `/audit:audit-tech-stack` | Stack-convention conformance (8 checks) |
+| forms | `/audit:audit-forms` | Form hardening (38 checks) |
+| a11y | `/audit:audit-a11y` | WCAG 2.1 AA (29 checks) |
+| seo | `/audit:audit-seo` | SEO + GEO (24 checks) |
+| deploy | `/audit:audit-deploy` | Pre-deploy readiness (29 checks) |
+| responsive | `/audit:audit-responsive` | Mobile / responsive (15 checks) |
+| hallucination | `/audit:audit-hallucination` | LLM fabrication risk (46 vectors) |
 
-`diff` (report comparator) is intentionally NOT part of a run-all — it compares two existing reports rather than auditing code. Run it separately with `/audit:diff` after two `audit-all` passes.
+`diff` (report comparator) is intentionally NOT part of a run-all — it compares two existing reports rather than auditing code. Run it separately with `/audit:audit-diff` after two `audit-all` passes.
 
 ## Resolving sibling skills
 
@@ -70,10 +70,10 @@ Presets that resolve to specific audit lists. Start simple, scale up.
 Tiers compose with `--include`/`--skip`:
 
 ```
-/audit:all --tier=quick --include=a11y            # quick + a11y
-/audit:all --tier=standard --skip=forms           # standard minus forms
-/audit:all --tier=full --skip=hallucination       # full minus hallucination (no AI features)
-/audit:all --tier=full --scope=src/ --report      # everything, scoped, saved to file
+/audit:audit-all --tier=quick --include=a11y            # quick + a11y
+/audit:audit-all --tier=standard --skip=forms           # standard minus forms
+/audit:audit-all --tier=full --skip=hallucination       # full minus hallucination (no AI features)
+/audit:audit-all --tier=full --scope=src/ --report      # everything, scoped, saved to file
 ```
 
 ## Execution

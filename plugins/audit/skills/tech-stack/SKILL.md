@@ -12,7 +12,7 @@ Audit the codebase against best practices for the detected tech stack. Adapts ch
 ## Arguments
 
 - `$ARGUMENTS` — optional:
-  - First positional argument is scope path (e.g., `/audit:tech-stack src/components/`)
+  - First positional argument is scope path (e.g., `/audit:audit-tech-stack src/components/`)
   - `--fix` — auto-fix issues after audit
   - `--report` — save report to `_local/reports/tech-stack-audit-<YYYY-MM-DD>.md`
   - No flags = audit only, print results

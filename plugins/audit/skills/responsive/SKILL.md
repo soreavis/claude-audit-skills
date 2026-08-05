@@ -1,6 +1,6 @@
 ---
 name: audit-responsive
-description: Responsive/mobile optimization audit. Checks padding, breakpoints, grid collapses, side-by-side stacking, sticky elements, touch targets, overflow, typography scaling, navigation, and footer across all viewports. Works on any web project (Next.js, React, Vue, static HTML, email templates). Use /audit:responsive for full audit or /audit:responsive --fix to auto-fix.
+description: Responsive/mobile optimization audit. Checks padding, breakpoints, grid collapses, side-by-side stacking, sticky elements, touch targets, overflow, typography scaling, navigation, and footer across all viewports. Works on any web project (Next.js, React, Vue, static HTML, email templates). Use /audit:audit-responsive for full audit or /audit:audit-responsive --fix to auto-fix.
 ---
 
 # Responsive / Mobile Optimization Audit
@@ -9,10 +9,10 @@ Comprehensive audit of responsive design across all viewport sizes. Detects layo
 
 ## Arguments
 
-- `/audit:responsive` — audit only, print results
-- `/audit:responsive <path>` — scope to a directory (e.g., `src/components/`)
-- `/audit:responsive --fix` — auto-fix issues after audit
-- `/audit:responsive --report` — save report to `_local/reports/audit-responsive-<YYYY-MM-DD>.md`
+- `/audit:audit-responsive` — audit only, print results
+- `/audit:audit-responsive <path>` — scope to a directory (e.g., `src/components/`)
+- `/audit:audit-responsive --fix` — auto-fix issues after audit
+- `/audit:audit-responsive --report` — save report to `_local/reports/audit-responsive-<YYYY-MM-DD>.md`
 
 ## Phase 1: Detect Project Type & CSS Approach
 
