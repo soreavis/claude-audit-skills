@@ -7,6 +7,11 @@ and this plugin adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- **Code examples follow one shape repo-wide.** Each block now opens with a one-line comment, the commands sit directly under it, and a blank line separates each group. Trailing comments past the command were the first thing a narrow viewport cut off, so the reason for a flag was lost while the flag survived.
+
+
 ## [0.2.0] - 2026-08-05
 
 ### Added

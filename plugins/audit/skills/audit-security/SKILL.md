@@ -346,6 +346,7 @@ Do NOT blindly apply TypeScript/Next.js patterns. Match fixes to the detected st
 
 **Timing-safe comparison:**
 ```typescript
+// Length is checked first — timingSafeEqual throws on mismatched buffers
 import { timingSafeEqual } from 'crypto';
 const a = Buffer.from(userValue, 'utf8');
 const b = Buffer.from(expectedValue, 'utf8');
@@ -354,6 +355,7 @@ if (a.length !== b.length || !timingSafeEqual(a, b)) { /* reject */ }
 
 **Origin validation:**
 ```typescript
+// Reject cross-origin writes before the handler runs
 const origin = request.headers.get("origin");
 const host = request.headers.get("host");
 if (origin && host && !origin.includes(host)) {
@@ -363,6 +365,7 @@ if (origin && host && !origin.includes(host)) {
 
 **Rate limiting (in-memory):**
 ```typescript
+// Per-process only — a multi-instance deploy needs a shared store
 const RATE_LIMIT = new Map<string, { count: number; resetAt: number }>();
 function checkRateLimit(ip: string, max: number, windowMs: number): boolean {
   const now = Date.now();
@@ -379,6 +382,7 @@ function checkRateLimit(ip: string, max: number, windowMs: number): boolean {
 
 **Security headers (Next.js):**
 ```javascript
+// Goes in next.config.js under an async headers() entry
 headers: [
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
   { key: "X-Frame-Options", value: "DENY" },
@@ -390,6 +394,7 @@ headers: [
 
 **Cookie hardening:**
 ```typescript
+// sameSite: "strict" breaks OAuth return flows — use "lax" for those cookies
 { httpOnly: true, secure: true, sameSite: "strict", path: "/" }
 ```
 

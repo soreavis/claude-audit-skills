@@ -35,8 +35,13 @@ For a plugin skill, the frontmatter **`name:`** sets the command's last segment 
 Before opening a PR:
 
 ```bash
-python3 build/validate.py            # what CI runs; needs PyYAML (pip install pyyaml)
-claude plugin validate .             # official marketplace-manifest check
+# What CI runs — needs PyYAML (pip install pyyaml)
+python3 build/validate.py
+
+# Official marketplace-manifest check
+claude plugin validate .
+
+# The plugin itself, and every skill's frontmatter
 claude plugin validate ./plugins/audit
 ```
 
@@ -52,6 +57,7 @@ CI runs `build/validate.py` on every push and PR. It checks that the manifests a
 ## Testing a skill locally
 
 ```bash
+# Install your clone as a marketplace, then run the skill you changed
 /plugin marketplace add <path-to-your-clone>
 /plugin install audit@soreavis-skills
 /reload-plugins
