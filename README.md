@@ -1,4 +1,4 @@
-# claude-audit-skills
+# Claude Audit Skills Companion
 
 [![validate](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -30,7 +30,7 @@ It installs as a Claude Code **plugin marketplace**. The whole suite installs as
 | `/audit:audit-hallucination` | LLM fabrication-risk audit — 46 vectors for prompts, AI-integration code, and generated content |
 | `/audit:audit-diff` | Compare two audit reports — what improved, regressed, or is new |
 
-Every audit is **report-only by default**; the ones that can remediate take an opt-in `--fix`. All findings carry `file:line` evidence, and each skill enforces its own anti-hallucination rules — no invented identifiers, evidence-mandated findings. CI (`build/validate.py`) fails any skill that ships without them.
+Every audit is **report-only by default**; the ones that can remediate take an opt-in `--fix`. Every skill carries an anti-hallucination section requiring `file:line` evidence and forbidding invented identifiers. CI checks that the section is present; it does not verify that a given audit run obeyed it.
 
 ## Install
 
@@ -100,10 +100,10 @@ claude-audit-skills/
     └── audit/
         ├── .claude-plugin/plugin.json
         └── skills/
-            ├── all/SKILL.md       → /audit:audit-all
-            ├── security/SKILL.md  → /audit:audit-security
-            ├── deep/SKILL.md      → /audit:audit-deep
-            └── …                  (13 skills total)
+            ├── audit-all/SKILL.md       → /audit:audit-all
+            ├── audit-security/SKILL.md  → /audit:audit-security
+            ├── audit-deep/SKILL.md      → /audit:audit-deep
+            └── …                        (13 skills total)
 ```
 
 ## Requirements
@@ -113,6 +113,15 @@ claude-audit-skills/
 - For `--report` / `--fix` reports: a `_local/` directory (skills create one if needed)
 
 No external services. No API keys. Pure methodology + Claude Code execution.
+
+## Documentation
+
+Detailed guides in [`docs/`](docs/):
+
+- [Getting started](docs/getting-started.md) — install, first audit, where reports go
+- [The audits](docs/the-audits.md) — what each of the 13 checks, and which one you want
+- [Reading a report](docs/reading-a-report.md) — verdicts, what to fix first, and the limits
+- [Troubleshooting](docs/troubleshooting.md) — commands missing, wrong stack detected, slow runs
 
 ## Contributing
 

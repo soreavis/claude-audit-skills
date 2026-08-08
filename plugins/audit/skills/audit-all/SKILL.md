@@ -38,9 +38,9 @@ The sibling audits this orchestrator can run (all bundled in the `audit` plugin)
 The sibling audits live next to this skill inside the plugin, one directory per audit:
 
 ```
-<plugin>/skills/all/SKILL.md      ← this skill
-<plugin>/skills/security/SKILL.md
-<plugin>/skills/deploy/SKILL.md
+<plugin>/skills/audit-all/SKILL.md      ← this skill
+<plugin>/skills/audit-security/SKILL.md
+<plugin>/skills/audit-deploy/SKILL.md
 ... etc
 ```
 

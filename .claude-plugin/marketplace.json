@@ -9,7 +9,7 @@
     {
       "name": "audit",
       "source": "./plugins/audit",
-      "description": "13 audit skills under one plugin (/audit:all, /audit:security, /audit:deep, …). Run any audit individually, or /audit:all to orchestrate the whole suite into one combined scorecard.",
+      "description": "13 audit skills under one plugin (/audit:audit-all, /audit:audit-security, /audit:audit-deep, …). Run any audit individually, or /audit:audit-all to orchestrate the whole suite into one combined scorecard.",
       "author": {
         "name": "Julian Soreavis"
       },
