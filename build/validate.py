@@ -154,8 +154,11 @@ def _scan(where, text):
     for i, line in enumerate(text.splitlines(), 1):
         at = f"{where}:{i}"
         # Check the whole token AND its dot/dash-separated parts: a client name
-        # usually arrives inside a hostname ("a client hostname.com") or a path segment,
+        # usually arrives inside a hostname or a path segment rather than alone,
         # so hashing only the full token misses the very shape that leaked.
+        # (Deliberately no example here — naming one would put the identifier
+        # back in the clear, which is the mistake this whole block exists to
+        # prevent. It happened once already, in this comment.)
         for tok in re.findall(r"[A-Za-z0-9._-]{4,}", line):
             for part in {tok, *re.split(r"[.\-_]", tok)}:
                 if len(part) >= 4 and hashlib.sha256(part.lower().encode()).hexdigest()[:32] in BANNED:
