@@ -1,3 +1,5 @@
+![A cloaked gatekeeper raises a lantern at a great iron-banded gate, holding a caravan of travellers and carts waiting in the mist while a vast plain of scattered lights stretches beyond.](docs/assets/hero.jpg)
+
 # Claude Audit Skills Companion
 
 [![validate](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soreavis/claude-audit-skills/actions/workflows/validate.yml)
